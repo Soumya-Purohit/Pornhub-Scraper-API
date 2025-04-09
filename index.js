@@ -33,7 +33,9 @@ app.get("/api/pornhub/search", async (req, res) => {
       }
     });
 
-    res.json({ results });
+    // Pretty printed JSON output
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({ results }, null, 2));
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });
